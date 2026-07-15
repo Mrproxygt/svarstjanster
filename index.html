@@ -3,110 +3,333 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Svarstjänster i Sverige 2026 — jämför pris och typ av svarstjänst</title>
-<meta name="description" content="Jämför svarstjänster för företag: traditionell svarsservice, callcenter och AI-svarstjänst. Vad kostar det, hur fungerar det och vilken typ passar ditt företag?">
+<title>Svarstjänst 2026 — jämför pris och typer av svarstjänster i Sverige</title>
+<meta name="description" content="Svarstjänster jämförda: pris, funktioner och vilken typ — bemannad svarsservice, callcenter eller AI-svarstjänst — som passar ditt företag. Oberoende jämförelse, uppdaterad juli 2026.">
 <link rel="canonical" href="https://svarstjanster.se/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Svarstjänst 2026 — jämför pris och typer av svarstjänster i Sverige">
+<meta property="og:description" content="Svarstjänster jämförda: pris, funktioner och vilken typ — bemannad svarsservice, callcenter eller AI-svarstjänst — som passar ditt företag.">
+<meta property="og:url" content="https://svarstjanster.se/">
+<meta property="og:locale" content="sv_SE">
+<meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Vad är en svarstjänst?","acceptedAnswer":{"@type":"Answer","text":"En svarstjänst svarar i telefon i ditt företags namn när du inte kan. Traditionellt sköts det av mänskliga telefonister på en svarsservice-central som tar meddelanden. Numera finns även AI-svarstjänster som svarar dygnet runt, bokar tider och skickar sammanfattningar direkt till dig."}},
-{"@type":"Question","name":"Vad kostar en svarstjänst?","acceptedAnswer":{"@type":"Answer","text":"Traditionell svarsservice kostar typiskt en fast månadsavgift plus cirka 15–35 kr per besvarat samtal, vilket ofta landar på 1 000–5 000 kr i månaden för ett småföretag. AI-svarstjänster har oftast fast månadspris från några hundra kronor oavsett samtalsvolym. Priserna är uppskattningar (juli 2026) — begär alltid aktuell prislista."}},
+{"@type":"Question","name":"Vad kostar en svarstjänst?","acceptedAnswer":{"@type":"Answer","text":"Traditionell svarsservice kostar typiskt en fast abonnemangsavgift plus cirka 15–35 kr per besvarat samtal (uppskattning, juli 2026) — begär alltid aktuell prislista hos leverantören. AI-svarstjänster som Menodi har istället ett fast pris från 795 kr/mån och ingen startavgift, oavsett hur många samtal som kommer in."}},
 {"@type":"Question","name":"Vilken svarstjänst är bäst för småföretag?","acceptedAnswer":{"@type":"Answer","text":"Det beror på samtalsvolym och ärendetyp. Får du få men komplexa samtal kan en bemannad svarsservice passa. Får du många rutinsamtal — bokningar, öppettider, offertförfrågningar — är en AI-svarstjänst oftast billigare och svarar dessutom kvällar och helger."}},
-{"@type":"Question","name":"Kan en svarstjänst boka tider åt mig?","acceptedAnswer":{"@type":"Answer","text":"Traditionella svarstjänster tar oftast bara meddelanden. Moderna AI-svarstjänster kan kopplas till din kalender och boka in kunder direkt under samtalet, samt skicka SMS-bekräftelser."}}
+{"@type":"Question","name":"Kan en svarstjänst boka tider åt mig?","acceptedAnswer":{"@type":"Answer","text":"Traditionella svarstjänster tar oftast bara meddelanden. Moderna AI-svarstjänster kan kopplas till din kalender och boka in kunder direkt under samtalet, samt skicka SMS-bekräftelser."}},
+{"@type":"Question","name":"Hur snabbt kan jag komma igång med en AI-svarstjänst?","acceptedAnswer":{"@type":"Answer","text":"En AI-svarstjänst som Menodi kopplas in via vidarekoppling av ditt befintliga telefonnummer, inte portering, och kan vara aktiv på minuter. Du behåller ditt gamla nummer och slipper vänta veckor på en ny lösning."}},
+{"@type":"Question","name":"Är mina samtal säkra och privata?","acceptedAnswer":{"@type":"Answer","text":"Hos exempelvis Menodi lagras all data inom EU med AES-256-kryptering och TLS 1.3, under SOC 2 Type II-efterlevnad. Inga samtal används för att träna AI-modeller."}}
 ]}
 </script>
 <style>
-:root{--bg:#faf6ef;--card:#fffdf8;--ink:#1c2536;--ink2:#5a6478;--navy:#1f3a6e;--navy2:#2c4f94;--line:#e6dfd0;--gold:#b98b2e}
+:root{--bg:#faf6ef;--card:#fffdf8;--ink:#1c2536;--ink2:#5a6478;--navy:#1f3a6e;--navy2:#2c4f94;--line:#e6dfd0;--gold:#b98b2e;--radius:14px;--shadow:0 4px 20px rgba(31,58,110,.07);--shadow-lg:0 12px 40px rgba(31,58,110,.12)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line);background:var(--card)}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-.logo{font-weight:700;font-size:19px;color:var(--navy);letter-spacing:-.2px}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+img,svg{display:block}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:20px}
+.logo{font-weight:700;font-size:19px;color:var(--navy);letter-spacing:-.3px;white-space:nowrap}
 .logo span{color:var(--gold)}
-.hero{padding:64px 0 48px;text-align:left;max-width:720px}
-h1{font-size:clamp(30px,5vw,44px);line-height:1.15;letter-spacing:-.5px;color:var(--navy)}
-.hero p{margin-top:16px;font-size:18px;color:var(--ink2)}
-.hcta{display:inline-block;margin-top:26px;background:var(--navy);color:#fff;padding:13px 26px;border-radius:8px;text-decoration:none;font-weight:600}
-.hcta:hover{background:var(--navy2)}
-h2{font-size:26px;color:var(--navy);margin:56px 0 8px;letter-spacing:-.3px}
-.sub{color:var(--ink2);margin-bottom:22px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px}
-.card h3{font-size:18px;color:var(--navy);margin-bottom:8px}
+.navlinks{display:flex;align-items:center;gap:28px;font-size:14.5px}
+.navlinks a.anchor{color:var(--ink2);text-decoration:none;font-weight:600;transition:color .15s}
+.navlinks a.anchor:hover{color:var(--navy)}
+.navcta{background:var(--navy);color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;transition:background .15s,transform .15s}
+.navcta:hover{background:var(--navy2);transform:translateY(-1px)}
+.tagline{font-size:13px;color:var(--ink2)}
+@media (max-width:768px){.tagline{display:none}.navlinks{gap:14px}.navlinks .anchor{font-size:13px}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* hero */
+.hero-section{padding:88px 0 96px}
+.hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+h1{font-size:clamp(34px,5vw,54px);line-height:1.12;letter-spacing:-.5px;color:var(--navy);font-weight:800}
+.hero-section p.sub{margin-top:18px;font-size:18px;color:var(--ink2);max-width:560px}
+.hero-ctas{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.hcta{display:inline-flex;align-items:center;background:var(--navy);color:#fff;padding:14px 26px;border-radius:9px;text-decoration:none;font-weight:700;font-size:15.5px;transition:background .15s,transform .15s;box-shadow:var(--shadow)}
+.hcta:hover{background:var(--navy2);transform:translateY(-2px)}
+.hcta.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy);box-shadow:none}
+.hcta.ghost:hover{background:var(--navy);color:#fff}
+.chips{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--ink2);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 14px}
+.chip svg{width:14px;height:14px;stroke:var(--gold)}
+
+/* hero mockup */
+.mock{position:relative;background:linear-gradient(155deg,#fffdf8,#f3edde 70%);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow-lg);overflow:hidden}
+.mock::before{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(185,139,46,.18),transparent 70%)}
+.mock-row{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;font-size:13.5px;color:var(--ink2);position:relative}
+.mock-ico{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mock-ico.call{background:#e9eef8}
+.mock-ico.arrow{background:transparent;color:var(--gold);font-size:16px;justify-content:center;width:20px}
+.mock-ico.cal{background:#f3ecd8}
+.mock-ico svg{width:18px;height:18px;stroke:var(--navy)}
+.mock-ico.cal svg{stroke:var(--gold)}
+.mock-line{height:9px;border-radius:5px;background:var(--line);margin-top:6px}
+.mock-line.w1{width:80%}.mock-line.w2{width:55%}
+.mock-cap{font-size:12px;color:var(--ink2);text-align:center;margin-top:6px;opacity:.75}
+
+/* section rhythm */
+section.block{padding:90px 0}
+section.block.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(24px,3vw,30px);color:var(--navy);letter-spacing:-.3px;margin-bottom:10px;font-weight:800}
+.sub{color:var(--ink2);margin-bottom:34px;max-width:640px;font-size:16px}
+
+/* feature grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.card .icowrap{width:46px;height:46px;border-radius:11px;background:#eef1f8;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.card .icowrap svg{width:24px;height:24px;stroke:var(--navy)}
+.card h3{font-size:18px;color:var(--navy);margin-bottom:8px;letter-spacing:-.1px}
 .card p{font-size:15px;color:var(--ink2)}
-.card .pris{display:block;margin-top:14px;font-weight:700;color:var(--ink);font-size:15px}
-.card .tag{display:inline-block;font-size:12px;font-weight:700;color:var(--gold);border:1px solid var(--gold);border-radius:99px;padding:2px 10px;margin-bottom:12px;letter-spacing:.4px;text-transform:uppercase}
-.tbl{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
-table{width:100%;border-collapse:collapse;min-width:640px}
-th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
-th{background:#f3edde;color:var(--navy);font-size:13px;text-transform:uppercase;letter-spacing:.5px}
+.card .pris{display:block;margin-top:16px;font-weight:700;color:var(--ink);font-size:14.5px;padding-top:14px;border-top:1px dashed var(--line)}
+.card .tag{display:inline-block;font-size:11.5px;font-weight:700;color:var(--gold);border:1px solid var(--gold);border-radius:99px;padding:2px 10px;margin-bottom:12px;letter-spacing:.4px;text-transform:uppercase}
+
+/* numbered steps */
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.step{position:relative;padding-left:54px}
+.step::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:10px;background:var(--navy);color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center}
+.step h3{font-size:17px;color:var(--navy);margin-bottom:6px}
+.step p{font-size:15px;color:var(--ink2)}
+
+/* table */
+.tbl{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;min-width:680px}
+th,td{text-align:left;padding:16px 18px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
+th{background:#f3edde;color:var(--navy);font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
 tr:last-child td{border-bottom:none}
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:16px 20px}
-summary{cursor:pointer;font-weight:600;color:var(--navy)}
-details p{margin-top:10px;color:var(--ink2);font-size:15px}
-.cta{margin:64px 0;background:var(--navy);border-radius:16px;padding:40px;color:#fff;text-align:center}
-.cta h2{color:#fff;margin:0 0 10px}
-.cta p{color:#c8d4ea;max-width:560px;margin:0 auto 24px}
-.btn{display:inline-block;background:var(--gold);color:#1c2536;padding:13px 26px;border-radius:8px;text-decoration:none;font-weight:700}
-footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--ink2);font-size:13.5px}
-footer a{color:var(--navy)}
-.note{font-size:13px;color:var(--ink2);margin-top:14px}
+th.hl,td.hl{background:rgba(185,139,46,.09);position:relative}
+th.hl{color:var(--navy)}
+th.hl::after{content:"Rekommenderad start";display:block;font-size:10.5px;letter-spacing:.3px;color:var(--gold);text-transform:none;font-weight:700;margin-top:3px}
+.note{font-size:13px;color:var(--ink2);margin-top:16px}
+
+/* stats band */
+.stats{background:var(--navy);border-radius:20px;padding:56px 40px;text-align:center;color:#fff}
+.stats .big{font-size:clamp(48px,7vw,84px);font-weight:800;letter-spacing:-1px;color:var(--gold)}
+.stats h2{color:#fff;margin-bottom:6px}
+.stats p{color:#c8d4ea;max-width:640px;margin:10px auto 0;font-size:16px}
+.stats .src{margin-top:18px;font-size:12.5px;color:#93a3c6}
+
+/* faq */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;padding:18px 22px;transition:box-shadow .15s}
+details[open]{box-shadow:var(--shadow)}
+summary{cursor:pointer;font-weight:700;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;color:var(--gold);transition:transform .2s;flex-shrink:0}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:14px;color:var(--ink2);font-size:15px}
+
+/* cta band */
+.cta{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:20px;padding:64px 40px;color:#fff;text-align:center;box-shadow:var(--shadow-lg)}
+.cta h2{color:#fff;margin:0 0 12px}
+.cta p{color:#c8d4ea;max-width:580px;margin:0 auto 28px;font-size:16.5px}
+.btn{display:inline-block;background:var(--gold);color:#1c2536;padding:15px 30px;border-radius:9px;text-decoration:none;font-weight:800;font-size:16px;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--ink2);font-size:14px;background:var(--card)}
+.fgrid{display:grid;grid-template-columns:1.1fr repeat(4,1fr);gap:28px;margin-bottom:36px}
+@media (max-width:768px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.fgrid{grid-template-columns:1fr}}
+.fgrid h4{color:var(--navy);font-size:13px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+.fgrid ul{list-style:none}
+.fgrid li{margin-bottom:9px}
+.fgrid a{text-decoration:none;color:var(--ink2)}
+.fgrid a:hover{color:var(--navy)}
+.fbottom{border-top:1px solid var(--line);padding-top:22px;font-size:13px}
+.fbottom a{color:var(--navy);text-decoration:none}
+.fbottom a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><div class="logo">Svarstjänster<span>.se</span></div><div style="font-size:13.5px;color:var(--ink2)">Oberoende jämförelse · uppdaterad juli 2026</div></div></header>
+
+<header>
+<div class="wrap nav">
+<div class="logo">Svarstjänster<span>.se</span></div>
+<div class="navlinks">
+<a class="anchor" href="#typer">Typer</a>
+<a class="anchor" href="#jamforelse">Jämförelse</a>
+<a class="anchor" href="#faq">FAQ</a>
+<span class="tagline">Oberoende jämförelse · juli 2026</span>
+<a class="navcta" href="#cta">Prova gratis</a>
+</div>
+</div>
+</header>
 
 <div class="wrap">
-<section class="hero">
-<h1>Jämför svarstjänster för företag 2026</h1>
-<p>Missade samtal är förlorade affärer. Här går vi igenom de tre typerna av svarstjänst som finns på svenska marknaden — vad de kostar, hur de fungerar och vilken som passar ditt företag.</p>
+
+<section class="hero-section">
+<div class="hero-grid">
+<div>
+<h1 class="reveal in">Svarstjänst för företag — jämför pris och typer 2026</h1>
+<p class="sub reveal in">Svarstjänster finns i tre huvudtyper: bemannad svarsservice, callcenter och AI-svarstjänst. Missade samtal är förlorade affärer — här går vi igenom vad varje typ kostar, hur den fungerar och vilken som passar ditt företag.</p>
+<div class="hero-ctas reveal in">
 <a class="hcta" href="https://menodi.se/?utm_source=svarstjanster&utm_medium=satellite&utm_campaign=hero" rel="sponsored">Prova en AI-svarstjänst gratis</a>
+<a class="hcta ghost" href="#jamforelse">Se jämförelsen</a>
+</div>
+<div class="chips reveal in">
+<span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/></svg>Svensk tjänst</span>
+<span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Dygnet runt</span>
+<span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>0 kr startavgift</span>
+</div>
+</div>
+<!-- MOCKUP: ägaren ersätter med riktig skärmdump av samtal-till-bokning-flödet -->
+<div class="mock reveal in">
+<div class="mock-row">
+<div class="mock-ico call"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></div>
+<div style="flex:1"><div class="mock-line w1"></div><div class="mock-line w2"></div></div>
+</div>
+<div class="mock-ico arrow" style="margin:0 auto">↓</div>
+<div class="mock-row" style="margin-top:12px">
+<div class="mock-ico cal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+<div style="flex:1"><div class="mock-line w1"></div><div class="mock-line w2"></div></div>
+</div>
+<div class="mock-cap">Samtal → automatisk bokning i kalendern, med SMS-bekräftelse</div>
+</div>
+</div>
 </section>
 
-<h2>Tre typer av svarstjänst</h2>
-<p class="sub">Alla löser samma grundproblem — någon svarar när du inte kan — men på olika sätt och till mycket olika pris.</p>
+<section class="block" id="typer">
+<h2 class="reveal">Tre typer av svarstjänst</h2>
+<p class="sub reveal">Sveriges svarstjänster ryms i tre kategorier: bemannad svarsservice, callcenter och AI-svarstjänst. Samtliga löser grundproblemet att fånga upp samtal när du inte kan, men gör det med olika teknik, bemanning och prismodell.</p>
 <div class="grid">
-<div class="card"><h3>Bemannad svarsservice</h3><p>Mänskliga telefonister svarar i ditt företagsnamn och tar meddelanden. Stark vid känsliga eller ovanliga ärenden. Betalas oftast per samtal, öppettider vanligen kontorstid.</p><span class="pris">Ca 1 000–5 000 kr/mån + ca 15–35 kr/samtal</span></div>
-<div class="card"><h3>Callcenter</h3><p>För större bolag med hög samtalsvolym. Offertbaserat, ofta med bemanningskrav och bindningstid. Överdimensionerat för de flesta småföretag.</p><span class="pris">Offert — per samtal eller per timme</span></div>
-<div class="card"><span class="tag">Nytt 2026</span><h3>AI-svarstjänst</h3><p>En AI-receptionist svarar dygnet runt, bokar tider i din kalender och skickar sammanfattning via SMS eller mejl. Fast pris oavsett hur många samtal du får.</p><span class="pris">Fast månadskostnad från några hundralappar</span></div>
+<div class="card reveal">
+<div class="icowrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+<h3>Bemannad svarsservice</h3>
+<p>Mänskliga telefonister svarar i ditt företagsnamn och tar meddelanden. Stark vid känsliga eller ovanliga ärenden. Betalas oftast per samtal, öppettider vanligen kontorstid.</p>
+<span class="pris">Abonnemang + ca 15–35 kr/samtal (uppskattning, juli 2026)</span>
 </div>
+<div class="card reveal">
+<div class="icowrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1m4 0h1m-6 4h1m4 0h1m-6 4h1m4 0h1"/></svg></div>
+<h3>Callcenter</h3>
+<p>För större bolag med hög samtalsvolym. Offertbaserat, ofta med bemanningskrav och bindningstid. Överdimensionerat för de flesta småföretag.</p>
+<span class="pris">Offert — per samtal eller per timme</span>
+</div>
+<div class="card reveal">
+<span class="tag">Nytt 2026</span>
+<div class="icowrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a3 3 0 0 1 6 0v2M9 13h.01M15 13h.01"/></svg></div>
+<h3>AI-svarstjänst</h3>
+<p>En AI-receptionist svarar dygnet runt, bokar tider i din kalender och skickar en sammanfattning efter varje samtal. Fast pris oavsett hur många samtal du får.</p>
+<span class="pris">Fast pris, t.ex. Menodi från 795 kr/mån, 0 kr startavgift</span>
+</div>
+</div>
+</section>
 
-<h2>Jämförelsen i korthet</h2>
-<p class="sub">Typiska nivåer för ett svenskt småföretag med normal samtalsvolym. Uppskattningar (juli 2026) — begär alltid aktuell prislista av respektive leverantör.</p>
-<div class="tbl"><table>
-<tr><th>Egenskap</th><th>Bemannad svarsservice</th><th>Callcenter</th><th>AI-svarstjänst</th></tr>
-<tr><td><b>Prismodell</b></td><td>Fast avgift + per samtal</td><td>Offert</td><td>Fast månadspris</td></tr>
-<tr><td><b>Öppettider</b></td><td>Oftast vardagar kontorstid</td><td>Enligt avtal</td><td>Dygnet runt, året om</td></tr>
-<tr><td><b>Bokar tider</b></td><td>Sällan</td><td>Ibland</td><td>Ja, direkt i din kalender</td></tr>
-<tr><td><b>Kostnad vid hög volym</b></td><td>Växer per samtal</td><td>Växer</td><td>Oförändrad</td></tr>
-<tr><td><b>Uppstartstid</b></td><td>Dagar–veckor</td><td>Veckor</td><td>Samma dag</td></tr>
-<tr><td><b>Exempel</b></td><td>Klassiska svarsservicebolag</td><td>Större kontaktcenter</td><td>T.ex. <a href="https://menodi.se/?utm_source=svarstjanster&utm_medium=satellite&utm_campaign=table" rel="sponsored">Menodi</a></td></tr>
+<section class="block alt">
+<h2 class="reveal">Så väljer du rätt svarstjänst</h2>
+<p class="sub reveal">Valet avgörs av hur många samtal ni får, vilken servicenivå kunderna förväntar sig och vilket utrymme som finns i budgeten. Tre frågor räcker för de flesta företag.</p>
+<div class="steps">
+<div class="step reveal"><h3>Hur många samtal missar du?</h3><p>Räkna en vanlig vecka. Vid fler än en handfull missade samtal blir per-samtal-prissättning snabbt dyr — då lönar sig fast pris.</p></div>
+<div class="step reveal"><h3>När ringer kunderna?</h3><p>Ringer kunder kvällar och helger (hantverkare, salonger, vård) behöver du en tjänst som faktiskt svarar då — de flesta bemannade tjänster gör det inte.</p></div>
+<div class="step reveal"><h3>Räcker ett meddelande?</h3><p>Om kunden egentligen vill boka en tid är en meddelandelapp ett extra steg. En tjänst som bokar direkt i kalendern stänger affären i samtalet.</p></div>
+</div>
+</section>
+
+<section class="block" id="jamforelse">
+<h2 class="reveal">Jämförelsen i korthet</h2>
+<p class="sub reveal">Här ser du de viktigaste skillnaderna mellan bemannad svarsservice, callcenter och AI-svarstjänst — en översiktlig jämförelse baserad på uppskattade prisnivåer och funktionalitet (juli 2026). Priser förändras, så begär alltid aktuell prislista direkt av leverantören.</p>
+<div class="tbl reveal"><table>
+<tr><th>Egenskap</th><th>Bemannad svarsservice</th><th>Callcenter</th><th class="hl">AI-svarstjänst</th></tr>
+<tr><td><b>Prismodell</b></td><td>Fast avgift + per samtal</td><td>Offert</td><td class="hl">Fast månadspris, t.ex. Menodi från 795 kr/mån</td></tr>
+<tr><td><b>Öppettider</b></td><td>Oftast vardagar kontorstid</td><td>Enligt avtal</td><td class="hl">Dygnet runt, året om</td></tr>
+<tr><td><b>Bokar tider</b></td><td>Sällan</td><td>Ibland</td><td class="hl">Ja, direkt i din kalender</td></tr>
+<tr><td><b>Kostnad vid hög volym</b></td><td>Växer per samtal</td><td>Växer</td><td class="hl">Oförändrad</td></tr>
+<tr><td><b>Uppstartstid</b></td><td>Dagar–veckor</td><td>Veckor</td><td class="hl">Samma dag</td></tr>
+<tr><td><b>Exempel</b></td><td>Klassiska svarsservicebolag</td><td>Större kontaktcenter</td><td class="hl">T.ex. Menodi</td></tr>
 </table></div>
 <p class="note">Vi anger inte enskilda konkurrenters exakta priser — de ändras ofta. Kontrollera alltid hos respektive leverantör.</p>
+</section>
 
-<h2>Så väljer du rätt svarstjänst</h2>
-<p class="sub">Tre frågor räcker för de flesta företag:</p>
-<div class="grid">
-<div class="card"><h3>1. Hur många samtal missar du?</h3><p>Räkna en vanlig vecka. Vid fler än en handfull missade samtal blir per-samtal-prissättning snabbt dyr — då lönar sig fast pris.</p></div>
-<div class="card"><h3>2. När ringer kunderna?</h3><p>Ringer kunder kvällar och helger (hantverkare, salonger, vård) behöver du en tjänst som faktiskt svarar då — de flesta bemannade tjänster gör det inte.</p></div>
-<div class="card"><h3>3. Räcker ett meddelande?</h3><p>Om kunden egentligen vill boka en tid är en meddelandelapp ett extra steg. En tjänst som bokar direkt i kalendern stänger affären i samtalet.</p></div>
+<section class="block alt">
+<div class="stats reveal">
+<div class="big">62%</div>
+<h2>Fler än 6 av 10 samtal besvaras aldrig hos småföretag</h2>
+<p>En studie av 411 Locals visar att 62% av samtalen till småföretag aldrig besvaras av en människa. Oavsett vilken typ av svarstjänst du väljer fångar den upp samtal som annars hade gått direkt till telefonsvarare.</p>
+<div class="src">Källa: 411 Locals Small Business Phone Study (85 företag, 58 branscher, 30 dagar)</div>
 </div>
+</section>
 
-<h2>Vanliga frågor</h2>
-<details><summary>Vad är en svarstjänst?</summary><p>En svarstjänst svarar i telefon i ditt företags namn när du inte kan. Traditionellt sköts det av mänskliga telefonister som tar meddelanden — numera finns även AI-svarstjänster som svarar dygnet runt, bokar tider och skickar sammanfattningar direkt till dig.</p></details>
-<details><summary>Vad kostar en svarstjänst?</summary><p>Traditionell svarsservice kostar typiskt en fast månadsavgift plus cirka 15–35 kr per besvarat samtal — ofta 1 000–5 000 kr i månaden för ett småföretag. AI-svarstjänster ligger oftast på fast månadspris från några hundra kronor, oavsett samtalsvolym. Uppskattningar per juli 2026.</p></details>
-<details><summary>Vilken svarstjänst är bäst för småföretag?</summary><p>Får du få men komplexa samtal kan bemannad svarsservice passa. Får du många rutinsamtal — bokningar, öppettider, offertförfrågningar — är en AI-svarstjänst oftast billigare och svarar dessutom kvällar och helger.</p></details>
-<details><summary>Kan en svarstjänst boka tider åt mig?</summary><p>Traditionella svarstjänster tar oftast bara meddelanden. Moderna AI-svarstjänster kopplas till din kalender och bokar in kunden direkt under samtalet, med SMS-bekräftelse.</p></details>
+<section class="block" id="faq">
+<h2 class="reveal">Vanliga frågor</h2>
+<p class="sub reveal">&nbsp;</p>
+<details class="reveal"><summary>Vad är en svarstjänst?</summary><p>En svarstjänst svarar i telefon i ditt företags namn när du inte kan. Traditionellt sköts det av mänskliga telefonister på en svarsservice-central som tar meddelanden. Numera finns även AI-svarstjänster som svarar dygnet runt, bokar tider och skickar sammanfattningar direkt till dig.</p></details>
+<details class="reveal"><summary>Vad kostar en svarstjänst?</summary><p>Traditionell svarsservice kostar typiskt en fast abonnemangsavgift plus cirka 15–35 kr per besvarat samtal (uppskattning, juli 2026) — begär alltid aktuell prislista hos leverantören. AI-svarstjänster som Menodi har istället ett fast pris från 795 kr/mån och ingen startavgift, oavsett hur många samtal som kommer in.</p></details>
+<details class="reveal"><summary>Vilken svarstjänst är bäst för småföretag?</summary><p>Det beror på samtalsvolym och ärendetyp. Får du få men komplexa samtal kan en bemannad svarsservice passa. Får du många rutinsamtal — bokningar, öppettider, offertförfrågningar — är en AI-svarstjänst oftast billigare och svarar dessutom kvällar och helger.</p></details>
+<details class="reveal"><summary>Kan en svarstjänst boka tider åt mig?</summary><p>Traditionella svarstjänster tar oftast bara meddelanden. Moderna AI-svarstjänster kan kopplas till din kalender och boka in kunder direkt under samtalet, samt skicka SMS-bekräftelser.</p></details>
+<details class="reveal"><summary>Hur snabbt kan jag komma igång med en AI-svarstjänst?</summary><p>En AI-svarstjänst som Menodi kopplas in via vidarekoppling av ditt befintliga telefonnummer, inte portering, och kan vara aktiv på minuter. Du behåller ditt gamla nummer och slipper vänta veckor på en ny lösning.</p></details>
+<details class="reveal"><summary>Är mina samtal säkra och privata?</summary><p>Hos exempelvis Menodi lagras all data inom EU med AES-256-kryptering och TLS 1.3, under SOC 2 Type II-efterlevnad. Inga samtal används för att träna AI-modeller.</p></details>
+</section>
 
-<div class="cta">
-<h2>Testa hur en AI-svarstjänst låter</h2>
-<p>Menodi är en svensk AI-receptionist som svarar på ditt företags samtal dygnet runt, bokar tider och skickar dig en sammanfattning efter varje samtal. Du kan ringa och prova den gratis innan du bestämmer dig.</p>
+<section class="block alt" id="cta">
+<div class="cta reveal">
+<h2>Redo att hitta din svarstjänst</h2>
+<p>Menodi är en svensk AI-svarstjänst som svarar på dina kunders samtal dygnet runt, bokar tider direkt i kalendern och skickar en sammanfattning efter varje samtal. Den kopplas in via vidarekoppling av ditt befintliga nummer på minuter, helt utan startavgift.</p>
 <a class="btn" href="https://menodi.se/?utm_source=svarstjanster&utm_medium=satellite&utm_campaign=cta" rel="sponsored">Prova gratis demo</a>
 </div>
+</section>
+
 </div>
 
-<footer><div class="wrap">
-<div>© 2026 Svarstjänster.se — en del av <a href="https://menodi.se" rel="sponsored">Menodi</a>. Prisuppgifter är generella uppskattningar per juli 2026, inte offerter.</div>
-</div></footer>
+<footer>
+<div class="wrap">
+<div class="fgrid">
+<div>
+<div class="logo" style="margin-bottom:12px">Svarstjänster<span>.se</span></div>
+<p style="max-width:280px">Oberoende jämförelse av svarstjänster för svenska företag — bemannad svarsservice, callcenter och AI-svarstjänst. Uppdaterad juli 2026.</p>
+</div>
+<div>
+<h4>Kategorier</h4>
+<ul>
+<li><a href="#typer">Bemannad svarsservice</a></li>
+<li><a href="#typer">Callcenter</a></li>
+<li><a href="#typer">AI-svarstjänst</a></li>
+</ul>
+</div>
+<div>
+<h4>Om sajten</h4>
+<ul>
+<li><a href="#jamforelse">Jämförelsen</a></li>
+<li><a href="#faq">Vanliga frågor</a></li>
+</ul>
+</div>
+<div>
+<h4>Menodi</h4>
+<ul>
+<li><a href="https://menodi.se/?utm_source=svarstjanster&utm_medium=satellite&utm_campaign=footer" rel="sponsored">Prova gratis demo</a></li>
+<li>Svensk AI-svarstjänst</li>
+</ul>
+</div>
+<div>
+<h4>Juridik</h4>
+<ul>
+<li>Priser är uppskattningar, ej bindande offerter</li>
+<li>Ingen koppling till namngivna varumärken utöver Menodi</li>
+<li>Uppdaterad juli 2026</li>
+</ul>
+</div>
+</div>
+<div class="fbottom">© 2026 Svarstjänster.se — en del av <a href="https://menodi.se/?utm_source=svarstjanster&utm_medium=satellite&utm_campaign=footer" rel="sponsored">Menodi</a>. Prisuppgifter är generella uppskattningar per juli 2026, inte offerter.</div>
+</div>
+</footer>
+
+<script>
+(function(){
+var els=document.querySelectorAll('.reveal:not(.in)');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+var io=new IntersectionObserver(function(entries){
+entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})
+},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+els.forEach(function(e){io.observe(e)});
+})();
+</script>
 </body>
 </html>
