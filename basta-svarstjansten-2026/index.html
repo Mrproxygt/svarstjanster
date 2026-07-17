@@ -150,8 +150,11 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--ink2);fo
 .fbottom a{color:var(--ink2);text-decoration:none}
 .fbottom a:hover{color:var(--navy)}
 </style>
+<link rel="stylesheet" href="https://menodi.se/fonts/fonts.css">
+<link rel="stylesheet" href="/sub-enhancements.css">
 </head>
 <body>
+<div class="progress-bar" aria-hidden="true"></div>
 <header>
   <div class="wrap">
     <div class="nav">
@@ -161,10 +164,20 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--ink2);fo
         <a href="/svarsservice" class="anchor">Svarsservice</a>
         <a href="/svarstjanst-pris" class="anchor">Pris</a>
         <a href="/basta-svarstjansten-2026/" class="anchor active">Bäst 2026</a>
-        <a href="https://menodi.se/?utm_source=svarstjanster&utm_medium=satellite&utm_campaign=basta-svarstjansten-2026" class="navcta" rel="sponsored" target="_blank" rel="noopener">Prova Menodi</a>
+        <a class="demo-phone" href="tel:+46844680844"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>Ring demo</a>
+<a href="https://menodi.se/?utm_source=svarstjanster&utm_medium=satellite&utm_campaign=basta-svarstjansten-2026" class="navcta" rel="sponsored" target="_blank" rel="noopener">Prova Menodi</a>
+<button class="hamburger-btn" id="menuToggle" aria-label="Meny" aria-expanded="false"><svg class="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M3 12h18M3 18h18"/></svg><svg class="hamburger-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:none"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       </div>
     </div>
   </div>
+<nav class="mobile-nav" id="mobileNav">
+<a href="/">Hem</a>
+<a href="/svarsservice/">Svarsservice</a>
+<a href="/svarstjanst-pris/">Svarstjänst pris</a>
+<a href="/personlig-svarsservice/">Personlig svarsservice</a>
+<a href="/callcenter/">Callcenter</a>
+<a href="/basta-svarstjansten-2026/">Bästa svarstjänsten 2026</a>
+</nav>
 </header>
 
 <div class="wrap">
@@ -397,5 +410,11 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--ink2);fo
     </div>
   </div>
 </footer>
+<div class="float-cta" aria-hidden="true">
+<a href="https://menodi.se/?utm_source=svarstjanster&utm_medium=satellite&utm_campaign=basta-svarstjansten-2026" class="fcta-primary" rel="sponsored">Prova Menodi gratis</a>
+<a class="fcta-phone" href="tel:+46844680844"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>Ring demo</a>
+</div>
+<button class="back-to-top" aria-label="Till toppen"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
+<script src="/sub-enhancements.js"></script>
 </body>
 </html>
