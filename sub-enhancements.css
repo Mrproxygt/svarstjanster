@@ -2,7 +2,7 @@
 ::selection{background:#1E3A5F;color:#fff}
 :root{
   --accent:#1E3A5F;--accent-hover:#2A5080;
-  --gold:#B8860B;--line:#E5DDCE;--paper:#FFFDF8;
+  --gold:#64748B;--line:#E5DDCE;--paper:#FFFDF8;
 }
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{font-family:'SF Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}
@@ -43,7 +43,7 @@ body{font-family:'SF Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,
 
 /* demo phone */
 .demo-phone{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);transition:border-color .2s,background .2s;white-space:nowrap}
-.demo-phone:hover{border-color:var(--gold);background:rgba(184,134,11,.04)}
+.demo-phone:hover{border-color:var(--gold);background:rgba(100,116,139,.04)}
 .demo-phone svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* print */
