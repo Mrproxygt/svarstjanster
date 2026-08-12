@@ -14,7 +14,16 @@ if(fcta){var last=0,heroH=0,hero=document.querySelector('.hero,section.block:fir
 var btt=document.querySelector('.back-to-top');
 if(btt){window.addEventListener('scroll',function(){btt.classList.toggle('visible',window.scrollY>400)},{passive:true});btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})})}
 
-/* hamburger */
+/* hamburger — single binder (guard against duplicate listeners) */
 var t=document.getElementById('menuToggle'),m=document.getElementById('mobileNav');
-if(t&&m){t.addEventListener('click',function(){var o=m.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');var ic=t.querySelector('.hamburger-icon'),cl=t.querySelector('.hamburger-close');if(ic)ic.style.display=o?'none':'';if(cl)cl.style.display=o?'':''});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');t.setAttribute('aria-expanded','false');var ic=t.querySelector('.hamburger-icon'),cl=t.querySelector('.hamburger-close');if(ic)ic.style.display='';if(cl)cl.style.display='none'})})}
+if(t&&m&&!t.dataset.menuBound){
+  t.dataset.menuBound='1';
+  function setOpen(o){
+    m.classList.toggle('open',o);
+    t.setAttribute('aria-expanded',o?'true':'false');
+    t.setAttribute('aria-label',o?'Stäng meny':'Öppna meny');
+  }
+  t.addEventListener('click',function(){setOpen(!m.classList.contains('open'));});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+}
 })();
