@@ -4,14 +4,14 @@
 # Outbound product CTAs go to third-party vendor sites.
 
 ## Primary pages
-- https://svarstjanster.se/ : Hub comparison of answering service types
-- https://svarstjanster.se/jamfor/ : Side-by-side matrix AI vs human vs callcenter
-- https://svarstjanster.se/ai-receptionist/ : AI receptionist guide
-- https://svarstjanster.se/ai-telefonist/ : AI phone operator guide
-- https://svarstjanster.se/leverantorer/ : Vendor catalog with external links
-- https://svarstjanster.se/svarstjanst-pris/ : Pricing guide
-- https://svarstjanster.se/branscher/ : Industry hub
-- https://svarstjanster.se/guider/ : Decision guides
-- https://svarstjanster.se/faq/ : Short FAQ answers
-- https://svarstjanster.se/alternativ/ : Alternatives to named vendors
-- https://svarstjanster.se/sitemap.xml : Full URL list (98 entries)
+- [Hub — jämför svarstjänster](https://svarstjanster.se/)
+- [Jämför AI vs bemannad vs callcenter](https://svarstjanster.se/jamfor/)
+- [AI-receptionist guide](https://svarstjanster.se/ai-receptionist/)
+- [AI-telefonist guide](https://svarstjanster.se/ai-telefonist/)
+- [Leverantörskatalog](https://svarstjanster.se/leverantorer/)
+- [Prisguide](https://svarstjanster.se/svarstjanst-pris/)
+- [Branscher](https://svarstjanster.se/branscher/)
+- [Guider](https://svarstjanster.se/guider/)
+- [FAQ](https://svarstjanster.se/faq/)
+- [Alternativ till leverantörer](https://svarstjanster.se/alternativ/)
+- [Sitemap (98 URLs)](https://svarstjanster.se/sitemap.xml)
