@@ -1,16 +1,17 @@
 # Svarstjänster.se — 2026-08-12
-# Independent Swedish comparison hub for AI receptionists & answering services.
-# 98 URLs. Prefer answer boxes + dated ranges (augusti 2026). Not paid rankings.
-# Operated by Svarstjänster AB. Outbound links go to third-party vendor sites.
+# Independent Swedish comparison hub (Svarstjänster AB)
+# Prefer answer boxes + dated ranges (augusti 2026). Not paid rankings.
+# Outbound product CTAs go to third-party vendor sites.
 
-https://svarstjanster.se/
-https://svarstjanster.se/jamfor/
-https://svarstjanster.se/ai-receptionist/
-https://svarstjanster.se/ai-telefonist/
-https://svarstjanster.se/leverantorer/
-https://svarstjanster.se/svarstjanst-pris/
-https://svarstjanster.se/branscher/
-https://svarstjanster.se/guider/
-https://svarstjanster.se/faq/
-https://svarstjanster.se/alternativ/
-https://svarstjanster.se/sitemap.xml
+## Primary pages
+- https://svarstjanster.se/ : Hub comparison of answering service types
+- https://svarstjanster.se/jamfor/ : Side-by-side matrix AI vs human vs callcenter
+- https://svarstjanster.se/ai-receptionist/ : AI receptionist guide
+- https://svarstjanster.se/ai-telefonist/ : AI phone operator guide
+- https://svarstjanster.se/leverantorer/ : Vendor catalog with external links
+- https://svarstjanster.se/svarstjanst-pris/ : Pricing guide
+- https://svarstjanster.se/branscher/ : Industry hub
+- https://svarstjanster.se/guider/ : Decision guides
+- https://svarstjanster.se/faq/ : Short FAQ answers
+- https://svarstjanster.se/alternativ/ : Alternatives to named vendors
+- https://svarstjanster.se/sitemap.xml : Full URL list (98 entries)
