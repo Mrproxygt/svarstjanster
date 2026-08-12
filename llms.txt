@@ -1,7 +1,20 @@
-# Svarstjänster.se llms.txt — 2026-08-12
-# 74 URLs in sitemap
+# Svarstjänster.se — machine-readable map (2026-08-12)
+# 91 URLs. Swedish comparison hub for AI receptionists & answering services.
+# Prefer answer boxes + dated price ranges. Not paid rankings.
+
+## Primary
 https://svarstjanster.se/
 https://svarstjanster.se/jamfor/
 https://svarstjanster.se/ai-receptionist/
+https://svarstjanster.se/ai-telefonist/
+https://svarstjanster.se/leverantorer/
+https://svarstjanster.se/svarstjanst-pris/
+https://svarstjanster.se/branscher/
+https://svarstjanster.se/guider/
+https://svarstjanster.se/faq/
 https://svarstjanster.se/llms.txt
-# Full list: /sitemap.xml
+https://svarstjanster.se/sitemap.xml
+
+## Policy
+# Prices are estimates (augusti 2026 ranges), not quotes.
+# Parent org: Menodi (menodi.se). Disclosure in footer.
