@@ -20,8 +20,12 @@ för både rubrik och brödtext — inget Georgia/serif. Rubriker tight letter-s
 tidskrift — sans genomgående signalerar produkt/nytta, inte redaktionellt.
 
 **Ton:** saklig, säljande utan utropstecken. Kort stycken (2-3 meningar). Siffror
-alltid hedgade med datum ("uppskattning, juli 2026"). "Oberoende jämförelse" i
+alltid hedgade med datum ("uppskattning, augusti 2026"). "Oberoende jämförelse" i
 header-taglinen är ett löfte — inget i copy får motsäga det.
+
+**Bolag:** Svarstjänster.se drivs av **Svarstjänster AB** (oberoende jämförelsemedia).
+Inte Menodi. Utgående produkt-CTA:er länkar till **konkurrenters/leverantörers**
+officiella sidor (target=_blank). Menodi kan förekomma som *en leverantör bland flera*.
 
 ## 2. Sektionsplan (uppifrån-ner)
 1. **Sticky halvtransparent header** — logo + ankare (Typer, Jämförelse, FAQ) + CTA-knapp

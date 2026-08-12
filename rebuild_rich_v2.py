@@ -13,7 +13,26 @@ ROOT = Path(__file__).resolve().parent
 TODAY = date.today().isoformat()
 REVIEW = "augusti 2026"
 BASE = "https://svarstjanster.se"
-MENODI = "https://menodi.se/?utm_source=svarstjanster&utm_medium=satellite&utm_campaign={c}"
+
+# Outbound: real competitor product pages (Svarstjänster AB is independent comparison media)
+COMPETITORS = {
+    "wecall": ("WeCall", "https://wecall.se/svarstjanst/"),
+    "answeronline": ("AnswerOnline", "https://answeronline.se/"),
+    "responda": ("Responda", "https://respondagroup.se/svarsservice/"),
+    "skaala": ("Skaala", "https://www.skaala.ai/sv/"),
+    "telink": ("Telink", "https://telink.se/ai-receptionist/"),
+    "telavox": ("Telavox", "https://telavox.se/ai-receptionist/"),
+    "lynes": ("Lynes", "https://lynes.io/funktioner/ai-telefonist"),
+    "ringup": ("Ringup", "https://www.ringup.se/"),
+    "itell": ("iTell", "https://www.itell.nu/tjanster/telefonpassning/"),
+    "svardirekt": ("SvarDirekt", "https://www.svardirekt.se/"),
+    "bigacom": ("Bigacom", "https://bigacom.se/svarstjanst/"),
+    "comunit": ("Comunit", "https://comunit.se/tjanster/svarstjanst"),
+    "menodi": ("Menodi", "https://menodi.se/"),
+}
+CTA_AI = ["skaala", "telink", "telavox", "lynes", "menodi"]
+CTA_HUMAN = ["wecall", "answeronline", "responda", "itell", "svardirekt", "bigacom", "ringup"]
+
 
 CSS = r"""
 :root{
@@ -187,8 +206,25 @@ footer{border-top:1px solid var(--line);padding:52px 0 36px;color:var(--ink2);fo
 """
 
 
-def utm(c: str) -> str:
-    return MENODI.format(c=c)
+def ext(url: str) -> str:
+    """External competitor link attrs."""
+    return f'href="{url}" target="_blank" rel="noopener noreferrer"'
+
+
+def competitor_href(key: str) -> str:
+    return COMPETITORS[key][1]
+
+
+def competitor_name(key: str) -> str:
+    return COMPETITORS[key][0]
+
+
+def pick_cta(seed: str = "default", kind: str = "ai") -> tuple[str, str]:
+    """Deterministic CTA pick from seed so pages stay stable."""
+    keys = CTA_AI if kind == "ai" else CTA_HUMAN
+    idx = sum(ord(c) for c in seed) % len(keys)
+    k = keys[idx]
+    return COMPETITORS[k]
 
 
 def faq_ld(items):
@@ -208,8 +244,8 @@ def org_ld():
             {"@type": "WebSite", "name": "Svarstjänster.se", "url": BASE + "/",
              "description": "Oberoende jämförelse av AI-receptionister, AI-telefonister och svarstjänster i Sverige.",
              "inLanguage": "sv-SE", "publisher": {"@id": BASE + "/#org"}},
-            {"@type": "Organization", "@id": BASE + "/#org", "name": "Svarstjänster.se", "url": BASE + "/",
-             "parentOrganization": {"@type": "Organization", "name": "Menodi", "url": "https://menodi.se"}},
+            {"@type": "Organization", "@id": BASE + "/#org", "name": "Svarstjänster AB", "url": BASE + "/",
+             "legalName": "Svarstjänster AB", "description": "Oberoende jämförelsesajt för svarstjänster och AI-receptionister i Sverige."},
         ],
     }, ensure_ascii=False)
 
@@ -235,7 +271,7 @@ def nav_html(active=""):
 <a class="logo" href="/">Svar<span>tjänster</span>.se</a>
 <div class="navlinks">
 {anch}
-<a class="navcta" href="{utm('nav')}" rel="sponsored">Prova AI gratis</a>
+<a class="navcta" href="/leverantorer/">Se leverantörer</a>
 <button class="hamburger-btn" id="menuToggle" aria-label="Meny" aria-expanded="false">☰</button>
 </div>
 </div>
@@ -271,12 +307,13 @@ def footer_html():
 <li><a href="/basta-svarstjansten-2026/">Bästa 2026</a></li>
 <li><a href="/llms.txt">llms.txt</a></li>
 </ul></div>
-<div><h4>Menodi</h4><ul>
-<li><a href="{utm('footer')}" rel="sponsored">Prova gratis demo</a></li>
-<li><a href="tel:+46844680844">Ring demo 08-446 80 844</a></li>
+<div><h4>Bolag</h4><ul>
+<li><a href="/leverantorer/">Alla leverantörer</a></li>
+<li><a href="/jamfor/">Jämför modeller</a></li>
+<li><a href="/faq/">FAQ</a></li>
 </ul></div>
 </div>
-<div class="wrap fbottom">© {date.today().year} Svarstjänster.se — en del av <a href="{utm('footer')}" rel="sponsored">Menodi</a>. Priser är uppskattningar ({REVIEW}), inte offerter. Begär alltid aktuell prislista hos leverantören.</div>
+<div class="wrap fbottom">© {date.today().year} <strong>Svarstjänster AB</strong> · Svarstjänster.se är en oberoende jämförelsesajt. Länkar till leverantörer går till deras egna webbplatser. Priser är uppskattningar ({REVIEW}), inte offerter. Begär alltid aktuell prislista hos respektive leverantör. Vi kan få ersättning om du går vidare via vissa länkar — det påverkar inte vår urvalsmetod.</div>
 </footer>
 <script>
 (function(){{var b=document.getElementById('menuToggle'),n=document.getElementById('mobileNav');
@@ -342,15 +379,19 @@ def chips(items):
     return '<div class="chips">' + "".join(f'<span class="chip"><i></i>{t}</span>' for t in items) + "</div>"
 
 
-def cta(title, sub, camp, secondary_href="/jamfor/", secondary="Se jämförelsen"):
+def cta(title, sub, camp="default", secondary_href="/leverantorer/", secondary="Alla leverantörer", kind="ai"):
+    name, url = pick_cta(camp, kind)
     return f'''<section class="wrap"><div class="cta-band">
 <h2>{title}</h2>
 <p>{sub}</p>
 <div class="ctas">
-<a class="btn gold" href="{utm(camp)}" rel="sponsored">Prova AI-svarstjänst gratis</a>
+<a class="btn gold" href="{url}" target="_blank" rel="noopener noreferrer">Besök {name}</a>
 <a class="btn ghost" href="{secondary_href}">{secondary}</a>
+<a class="btn ghost" href="/jamfor/">Jämför modeller</a>
 </div>
+<p style="margin-top:14px;font-size:12.5px;color:#c8d4ea;opacity:.9">Extern länk till leverantörens webbplats. Svarstjänster AB är oberoende — inte densamma som leverantören.</p>
 </div></section>'''
+
 
 
 # ─── DATA ───────────────────────────────────────────────────────────
@@ -483,7 +524,7 @@ ALTERNATIV = [
      ["Bemannad passning", "Meddelanden", "Känd synonym-sök"],
      ["Vill ersätta meddelande med bokning", "AI-röst svenska", "Låg volym + kväll"]),
     ("skaala", "Skaala", "AI-svarsservice / AI-receptionist.",
-     ["AI-first", "Fast pristänk", "Samma kategori som Menodi"],
+     ["AI-first", "Fast pristänk", "AI-first-kategori"],
      ["Jämför bokning/språk/data", "Kolla integrationer", "Branschdemo"]),
     ("telink", "Telink", "AI-receptionist + växel-nära SEO.",
      ["Synlig på AI receptionist", "Teknikvinkel", "Många landningssidor"],
@@ -508,19 +549,21 @@ ALTERNATIV = [
      ["Jämför AI-fastpris", "Branschdemo"]),
 ]
 
+# name, type, price model, availability, booking, geo, note, external_url
 LEVERANTORER = [
-    ("Menodi", "AI-receptionist", "Fast från ca 795 kr/mån", "24/7", "Ja", "Sverige/EU", "AI-first, vidarekoppling, bokning, SMS, transkript."),
-    ("Skaala", "AI-svarsservice", "Offert/fast (kolla live)", "24/7 AI", "Varierar", "Sverige", "AI-kategori i SE-SERP."),
-    ("Telink", "AI-receptionist", "Offert", "24/7", "Varierar", "Sverige", "Stark SEO på AI-receptionist."),
-    ("Telavox", "Telefoni + AI", "Abonnemang+moduler", "Beror", "Via plattform", "Sverige", "Bäst om ni redan är kund."),
-    ("Lynes", "Molnväxel + AI", "Abonnemang", "Beror", "Via växel", "Sverige", "Växel-first."),
-    ("WeCall", "Bemannad", "Offert / per samtal-nivå", "Avtal", "Begränsad", "Sverige", "Mänskliga agenter."),
-    ("AnswerOnline", "Svarstjänst/kundtjänst", "Offert", "Avtal", "Begränsad", "Sverige", "Bred kundtjänst."),
-    ("Responda", "Svarsservice", "Offert", "Avtal", "Begränsad", "Sverige", "Etablerad traditionell."),
-    ("Ringup", "Svarsservice", "Offert", "Avtal", "Begränsad", "Sverige", "Klassisk passning."),
-    ("iTell", "Telefonpassning", "Offert", "Avtal", "Begränsad", "Sverige", "Head-term synlighet."),
-    ("SvarDirekt", "Personlig service", "Offert", "Avtal", "Begränsad", "Sverige", "Lång historik."),
-    ("Bigacom", "Svarstjänst 24/7", "Offert", "24/7-profil", "Begränsad", "Sverige", "Bemannad tillgänglighet."),
+    ("Skaala", "AI-svarsservice", "Offert/fast (kolla live)", "24/7 AI", "Varierar", "Sverige", "AI-first i SE-SERP.", "https://www.skaala.ai/sv/"),
+    ("Telink", "AI-receptionist", "Offert", "24/7", "Varierar", "Sverige", "Stark SEO på AI-receptionist.", "https://telink.se/ai-receptionist/"),
+    ("Telavox", "Telefoni + AI", "Abonnemang+moduler", "Beror", "Via plattform", "Sverige", "Bra om ni redan är Telavox-kund.", "https://telavox.se/ai-receptionist/"),
+    ("Lynes", "Molnväxel + AI", "Abonnemang", "Beror", "Via växel", "Sverige", "Växel-first med AI-telefonist.", "https://lynes.io/funktioner/ai-telefonist"),
+    ("Menodi", "AI-receptionist", "Fast abonnemang (kolla live)", "24/7", "Ja", "Sverige/EU", "AI-first, vidarekoppling, bokning.", "https://menodi.se/"),
+    ("WeCall", "Bemannad", "Offert / per samtal-nivå", "Avtal", "Begränsad", "Sverige", "Mänskliga agenter.", "https://wecall.se/svarstjanst/"),
+    ("AnswerOnline", "Svarstjänst/kundtjänst", "Offert", "Avtal", "Begränsad", "Sverige", "Bred extern kundtjänst.", "https://answeronline.se/"),
+    ("Responda", "Svarsservice", "Offert", "Avtal", "Begränsad", "Sverige", "Etablerad traditionell aktör.", "https://respondagroup.se/svarsservice/"),
+    ("Ringup", "Svarsservice", "Offert", "Avtal", "Begränsad", "Sverige", "Klassisk telefonpassning.", "https://www.ringup.se/"),
+    ("iTell", "Telefonpassning", "Offert", "Avtal", "Begränsad", "Sverige", "Synlig på head-termer.", "https://www.itell.nu/tjanster/telefonpassning/"),
+    ("SvarDirekt", "Personlig service", "Offert", "Avtal", "Begränsad", "Sverige", "Lång historik.", "https://www.svardirekt.se/"),
+    ("Bigacom", "Svarstjänst 24/7", "Offert", "24/7-profil", "Begränsad", "Sverige", "Bemannad tillgänglighet.", "https://bigacom.se/svarstjanst/"),
+    ("Comunit", "Svarstjänst", "Offert", "Avtal", "Begränsad", "Sverige", "Bemannad företagsfokus.", "https://comunit.se/tjanster/svarstjanst"),
 ]
 
 
@@ -531,7 +574,7 @@ def build_hub():
         ("Vad är en svarstjänst?",
          "En svarstjänst svarar i telefon i ditt företags namn när du inte kan. Det kan vara bemannad svarsservice, callcenter eller AI-receptionist/AI-telefonist som bokar tider och sammanfattar samtal."),
         ("Vad kostar en svarstjänst i Sverige 2026?",
-         "Traditionell svarsservice ligger ofta runt 1 000–5 000 kr/mån plus ca 15–35 kr per samtal (uppskattning). AI-svarstjänster kan ha fast pris från ca 795 kr/mån. Begär alltid aktuell offert."),
+         "Traditionell svarsservice ligger ofta runt 1 000–5 000 kr/mån plus ca 15–35 kr per samtal (uppskattning). AI-svarstjänster annonserar ofta fast abonnemang från ca 800–2 000 kr/mån. Begär alltid aktuell offert."),
         ("AI-receptionist eller bemannad svarsservice?",
          "Välj AI när många samtal är rutin (bokning, öppettider, kvalificering) och du vill ha 24/7. Välj bemannad när ärenden kräver empati, förhandling eller komplex bedömning. Många blandar: AI först, eskalering till människa."),
         ("Vad är skillnaden mellan AI-receptionist och AI-telefonist?",
@@ -560,7 +603,7 @@ En modern svarstjänst är antingen <strong>bemannad</strong> (per samtal + abon
 <div class="ctas">
 <a class="btn" href="/jamfor/">Öppna jämförelsen</a>
 <a class="btn ghost" href="/ai-receptionist/">AI-receptionist</a>
-<a class="btn ghost" href="{utm('hero')}" rel="sponsored">Prova Menodi</a>
+<a class="btn ghost" href="/leverantorer/">Se leverantörer</a>
 </div>
 </div>
 <div class="facts-card">
@@ -569,7 +612,7 @@ En modern svarstjänst är antingen <strong>bemannad</strong> (per samtal + abon
 <div><dt>Bäst för rutin + natt</dt><dd>AI-receptionist</dd></div>
 <div><dt>Bäst för komplexa samtal</dt><dd>Bemannad service</dd></div>
 <div><dt>Bäst för hög volym/SLA</dt><dd>Callcenter</dd></div>
-<div><dt>Typiskt AI-pris (ex.)</dt><dd>från ca 795 kr/mån</dd></div>
+<div><dt>Typiskt AI-pris (ex.)</dt><dd>ca 800–2 000 kr/mån</dd></div>
 <div><dt>Typiskt bemannat</dt><dd>1–5 tkr + 15–35 kr/samtal</dd></div>
 </dl>
 </div>
@@ -608,7 +651,7 @@ En modern svarstjänst är antingen <strong>bemannad</strong> (per samtal + abon
 <div class="tbl"><table>
 <thead><tr><th>Kriterium</th><th>Bemannad</th><th>Callcenter</th><th class="hl">AI-receptionist</th></tr></thead>
 <tbody>
-<tr><td>Typiskt pris</td><td>1–5 tkr + 15–35 kr/samtal</td><td>Offert, ofta 5–20 tkr+</td><td class="hl">Fast från ca 795 kr/mån</td></tr>
+<tr><td>Typiskt pris</td><td>1–5 tkr + 15–35 kr/samtal</td><td>Offert, ofta 5–20 tkr+</td><td class="hl">Fast ca 800–2 000 kr/mån</td></tr>
 <tr><td>Tillgänglighet</td><td>Enligt skift</td><td>Enligt avtal</td><td class="hl">24/7</td></tr>
 <tr><td>Bokning i kalender</td><td>Ofta manuell</td><td>Processberoende</td><td class="hl">Vanligt som kärnfunktion</td></tr>
 <tr><td>Samtidiga samtal</td><td>Begränsat av bemanning</td><td>Skalbart mot kostnad</td><td class="hl">Ofta obegränsat</td></tr>
@@ -630,7 +673,7 @@ En modern svarstjänst är antingen <strong>bemannad</strong> (per samtal + abon
 <div class="big">62 %</div>
 <h2>av samtal till småföretag besvaras aldrig av en människa</h2>
 <p>411 Locals-studien (85 företag, 58 branscher, 30 dagar) — en AI-svarstjänst minskar risken att samtalet dör i röstbrevlådan.</p>
-<div class="src">Källa: 411 Locals, Missed Calls Study — verifierad marknadskälla. Inte Menodi-egendata.</div>
+<div class="src">Källa: 411 Locals, Missed Calls Study — verifierad marknadskälla. Inte egen plattformsdata från någon leverantör.</div>
 </div>
 </section>
 
@@ -650,7 +693,7 @@ En modern svarstjänst är antingen <strong>bemannad</strong> (per samtal + abon
 {faq_html(faqs)}
 </div></section>
 
-{cta("Vill du testa en AI-svarstjänst live?","Menodi kopplas via vidarekoppling — behåll numret, prova bokning och svensk röst.","cta")}
+{cta("Vill du testa en AI-svarstjänst live?","Gå vidare till en leverantörs webbplats för demo — jämför gärna flera innan du bestämmer dig.","cta")}
 '''
     write("index.html", page(
         "Svarstjänster 2026 — jämför AI-receptionist, AI-telefonist & bemannad service",
@@ -714,7 +757,7 @@ Jämför först <strong>modell</strong> (bemannad / callcenter / AI), sedan <str
 <tr><td>Dokumentation</td><td>Manuell logg</td><td>CRM-beroende</td><td class="hl">Transkript + sammanfattning standard</td></tr>
 <tr><td>GDPR / data</td><td>Fråga process</td><td>Fråga process</td><td class="hl">Kräv EU-lagring & ingen träningsanvändning</td></tr>
 </tbody></table></div>
-<p class="note">Ingen betald placering. Menodi kan lyftas som exempel på AI-fastpris eftersom sajten är en del av Menodi — se disclosure i sidfoten.</p>
+<p class="note">Ingen köpt topplista. Exempelpriser är marknadsintervall; kolla alltid leverantörens egna sidor. Disclosure i sidfoten.</p>
 </div></section>
 
 <section class="block wrap">
@@ -747,7 +790,7 @@ def build_ai_receptionist():
         ("Vad är en AI-receptionist?",
          "En AI-receptionist är en röstassistent som svarar på inkommande samtal, förstår naturligt tal, kan boka möten, svara på vanliga frågor och eskalera till människa vid behov."),
         ("Vad kostar en AI-receptionist i Sverige?",
-         "Många leverantörer kör abonnemang. Exempel: Menodi från ca 795 kr/mån. Andra är offertbaserade. Jämför alltid vad som ingår."),
+         "Många leverantörer kör abonnemang. AI-abonnemang kan börja runt ca 800–2 000 kr/mån hos vissa aktörer; andra är offertbaserade. Jämför alltid vad som ingår."),
         ("Fungerar AI-receptionist för småföretag?",
          "Ja — särskilt när ni missar samtal under jobb. Småföretag får störst effekt på kväll/helg och vid ensamarbete."),
         ("Hur snabb är starten?",
@@ -769,7 +812,7 @@ En AI-receptionist svarar 24/7 på svenska, tar rutinärenden (bokning, öppetti
 </div>
 {chips(["24/7", "Bokning", "Svenska", "Vidarekoppling"])}
 <div class="ctas">
-<a class="btn" href="{utm('ai-receptionist')}" rel="sponsored">Testa AI-receptionist</a>
+<a class="btn" href="https://www.skaala.ai/sv/" target="_blank" rel="noopener noreferrer">Exempel: Skaala</a>
 <a class="btn ghost" href="/branscher/">Välj bransch</a>
 </div>
 </div>
@@ -818,7 +861,7 @@ En AI-receptionist svarar 24/7 på svenska, tar rutinärenden (bokning, öppetti
 <h2>Pris — vad du ska förvänta dig</h2>
 <p class="p">Se även den fulla <a href="/svarstjanst-pris/">prisguiden</a>. Tre vanliga modeller:</p>
 <div class="grid">
-<div class="card"><span class="tag">Vanligast AI</span><h3>Fast AI-abonnemang</h3><p>Förutsägbart. Exempel Menodi från ca 795 kr/mån. Kolla gränser för minuter/samtal och setup-avgift.</p></div>
+<div class="card"><span class="tag">Vanligast AI</span><h3>Fast AI-abonnemang</h3><p>Förutsägbart. Vissa AI-aktörer annonserar från ca 800–2 000 kr/mån. Kolla gränser för minuter/samtal och setup-avgift.</p></div>
 <div class="card"><span class="tag">Telefoni</span><h3>Plattform + AI-modul</h3><p>Telavox/Lynes-stil: ni betalar växel + AI. Bra om ni redan är kund i ekosystemet.</p></div>
 <div class="card"><span class="tag">Enterprise</span><h3>Offert</h3><p>Vanligt hos både AI- och bemannade aktörer. Kräv rader: setup, månad, överage, bindningstid.</p></div>
 </div>
@@ -877,7 +920,7 @@ En AI-telefonist svarar i ert namn, hanterar flera samtal parallellt och kan bok
 {chips(["Fältpersonal", "Enmansbolag", "Efter kontorstid"])}
 <div class="ctas">
 <a class="btn" href="/jamfor/">Jämför modeller</a>
-<a class="btn ghost" href="{utm('ai-telefonist')}" rel="sponsored">Lyssna på demo</a>
+<a class="btn ghost" href="https://lynes.io/funktioner/ai-telefonist" target="_blank" rel="noopener noreferrer">Exempel: Lynes</a>
 </div>
 </section>
 
@@ -920,12 +963,16 @@ En AI-telefonist svarar i ert namn, hanterar flera samtal parallellt och kan bok
 
 def build_leverantorer():
     rows = "".join(
-        f"<tr><td><strong>{n}</strong></td><td>{t}</td><td>{p}</td><td>{a}</td><td>{b}</td><td>{g}</td><td>{note}</td></tr>"
-        for n, t, p, a, b, g, note in LEVERANTORER
+        f'<tr><td><strong><a href="{url}" target="_blank" rel="noopener noreferrer">{n}</a></strong></td>'
+        f"<td>{t}</td><td>{p}</td><td>{a}</td><td>{b}</td><td>{g}</td>"
+        f'<td>{note} <a href="{url}" target="_blank" rel="noopener noreferrer">Besök sajt →</a></td></tr>'
+        for n, t, p, a, b, g, note, url in LEVERANTORER
     )
     cards = "".join(
-        f'<div class="card"><span class="tag">{t}</span><h3>{n}</h3><p>{note}</p><p class="meta-line">Prisbild: {p} · {a} · Bokning: {b}</p></div>'
-        for n, t, p, a, b, g, note in LEVERANTORER
+        f'<div class="card"><span class="tag">{t}</span><h3>{n}</h3><p>{note}</p>'
+        f'<p class="meta-line">Prisbild: {p} · {a} · Bokning: {b}</p>'
+        f'<a class="more" href="{url}" target="_blank" rel="noopener noreferrer">Öppna {n} →</a></div>'
+        for n, t, p, a, b, g, note, url in LEVERANTORER
     )
     body = f'''
 <section class="hero wrap">
@@ -933,7 +980,7 @@ def build_leverantorer():
 <h1>Leverantörer av svarstjänst & AI-receptionist i Sverige</h1>
 <p class="lede">Katalog — inte köpt topplista. Använd som karta; verifiera alltid pris och villkor hos leverantören.</p>
 <div class="answer-box"><span class="lbl">Kort svar</span>
-Marknaden delar sig i <strong>AI-first</strong> (t.ex. Menodi, Skaala, Telink), <strong>telefoni+AI</strong> (Telavox, Lynes) och <strong>bemannad svarsservice</strong> (WeCall, Responda, AnswerOnline m.fl.).
+Marknaden delar sig i <strong>AI-first</strong> (t.ex. Skaala, Telink, Menodi), <strong>telefoni+AI</strong> (Telavox, Lynes) och <strong>bemannad svarsservice</strong> (WeCall, Responda, AnswerOnline m.fl.).
 </div>
 </section>
 <section class="block alt"><div class="wrap">
@@ -953,7 +1000,7 @@ Marknaden delar sig i <strong>AI-first</strong> (t.ex. Menodi, Skaala, Telink), 
 '''
     write("leverantorer/index.html", page(
         "Leverantörer — AI-receptionist & svarstjänster i Sverige",
-        "Katalog över leverantörer: Menodi, Skaala, Telink, Telavox, Lynes, WeCall, Responda, AnswerOnline m.fl. Typ, prisbild, 24/7 och bokning.",
+        "Katalog över leverantörer: Skaala, Telink, Telavox, Lynes, Menodi, WeCall, Responda, AnswerOnline m.fl. Typ, prisbild, 24/7 och bokning.",
         f"{BASE}/leverantorer/", body, "lev",
         crumbs=[("Hem", f"{BASE}/"), ("Leverantörer", f"{BASE}/leverantorer/")],
     ))
@@ -962,7 +1009,7 @@ Marknaden delar sig i <strong>AI-first</strong> (t.ex. Menodi, Skaala, Telink), 
 def build_pris():
     faqs = [
         ("Vad kostar en svarstjänst?",
-         "AI-svarstjänst kan ha fast pris från ca 795 kr/mån. Bemannad ofta 1 000–5 000 kr/mån plus ca 15–35 kr/samtal. Anställd receptionist 40 000–50 000 kr/mån i lön-nivå. Uppskattningar — begär offert."),
+         "AI-svarstjänst kan ha fast abonnemang ca 800–2 000 kr/mån beroende på leverantör. Bemannad ofta 1 000–5 000 kr/mån plus ca 15–35 kr/samtal. Anställd receptionist 40 000–50 000 kr/mån i lön-nivå. Uppskattningar — begär offert."),
         ("Vad ingår i ett fast AI-pris?",
          "Hos moderna leverantörer: samtal, röst, ofta kalenderbokning, SMS, transkript. Läs alltid villkor."),
         ("Kan jag behålla mitt nummer?",
@@ -988,7 +1035,7 @@ Räkna <strong>total månadskostnad vid er samtalsvolym</strong>. Per-samtal bli
 <div class="tbl"><table>
 <thead><tr><th>Typ</th><th>Månad</th><th>Per samtal</th><th>Kommentar</th></tr></thead>
 <tbody>
-<tr><td class="hl"><strong>AI-svarstjänst (t.ex. Menodi)</strong></td><td class="hl">från ca 795 kr</td><td class="hl">ofta 0 kr</td><td class="hl">24/7, bokning, SMS — kolla gränser</td></tr>
+<tr><td class="hl"><strong>AI-svarstjänst (kategori)</strong></td><td class="hl">ca 800–2 000 kr</td><td class="hl">ofta 0 kr</td><td class="hl">24/7, bokning, SMS — kolla gränser</td></tr>
 <tr><td>Bemannad svarsservice</td><td>1 000–5 000 kr</td><td>15–35 kr</td><td>Skalar med volym</td></tr>
 <tr><td>Callcenter</td><td>5 000–20 000+ kr</td><td>varierar</td><td>Offert, process</td></tr>
 <tr><td>Anställd receptionist</td><td>40 000–50 000 kr</td><td>ingår i lön</td><td>+ sociala avgifter</td></tr>
@@ -1001,7 +1048,7 @@ Räkna <strong>total månadskostnad vid er samtalsvolym</strong>. Per-samtal bli
 <p class="p">Exemplet är illustrativt. Era minuter, snittlängd och avtal styr utfallet.</p>
 <ul class="checklist">
 <li>Per samtal 25 kr + abonnemang 2 000 kr ≈ <strong>9 500 kr</strong></li>
-<li>Fast AI 795 kr ≈ <strong>795 kr</strong></li>
+<li>Fast AI-abonnemang ≈ <strong>800–2 000 kr</strong> (exempelintervall)</li>
 <li>Anställd ≈ <strong>42 000 kr</strong> (lön-nivå, exkl. fulla arbetsgivaravgifter i vissa beräkningar)</li>
 </ul>
 <p class="p">Om AI tar 80 % av samtalen och 20 % eskaleras till er, vinner ni fortfarande tid jämfört med att allt landar i röstbrevlådan.</p>
@@ -1029,7 +1076,7 @@ def build_bransch(slug, keyword, title, blurb, checks, prompt, unique_a, unique_
         (f"Vad ska en AI kunna för {keyword}?",
          "Hantera de 3–5 vanligaste intents, boka rätt, eskalera undantag, och aldrig hitta på policy ni inte godkänt."),
         ("Vad kostar det?",
-         "AI-fastpris kan börja runt 795 kr/mån (exempel Menodi). Bemannad per samtal blir dyrare vid volym. Se prisguiden."),
+         "AI-fastpris kan börja runt ca 800–2 000 kr/mån beroende på leverantör. Bemannad per samtal blir dyrare vid volym. Se prisguiden."),
         ("Hur undviker vi fel svar?",
          "Skriv förbjudna löften, akutregler och vad som alltid ska till människa. Testa tre scripts innan go-live."),
     ]
@@ -1050,7 +1097,7 @@ För <strong>{keyword}</strong> är värdet att inte missa bokningar och kvalifi
 </div>
 {chips(["Branschguide", REVIEW, "Demo-first"])}
 <div class="ctas">
-<a class="btn" href="{utm('bransch-'+slug)}" rel="sponsored">Testa AI för {keyword}</a>
+<a class="btn" href="/leverantorer/">Jämför leverantörer</a>
 <a class="btn ghost" href="/jamfor/">Jämför modeller</a>
 </div>
 </section>
@@ -1131,7 +1178,7 @@ En AI-receptionist för bolag i <strong>{name}</strong> kopplas på ert befintli
 </div>
 {chips([name, "Vidarekoppling", "24/7"])}
 <div class="ctas">
-<a class="btn" href="{utm('city-'+slug)}" rel="sponsored">Demo för bolag i {name}</a>
+<a class="btn" href="/leverantorer/">Se leverantörer</a>
 <a class="btn ghost" href="/ai-receptionist/">Nationell guide</a>
 </div>
 </section>
@@ -1186,14 +1233,20 @@ def build_alternativ(slug, name, desc, strengths, switch_when):
     ]
     s = "".join(f"<li>{x}</li>" for x in strengths)
     w = "".join(f"<li>{x}</li>" for x in switch_when)
+    # official site if known
+    off = COMPETITORS.get(slug)
+    off_html = ""
+    if off:
+        off_html = f'<div class="ctas"><a class="btn" href="{off[1]}" target="_blank" rel="noopener noreferrer">Officiell sajt: {off[0]}</a><a class="btn ghost" href="/leverantorer/">Alla leverantörer</a></div>'
     body = f'''
 <section class="hero wrap">
 <div class="breadcrumb"><a href="/">Hem</a> › <a href="/alternativ/">Alternativ</a> › {name}</div>
 <h1>Alternativ till {name}</h1>
 <p class="lede">{desc}</p>
 <div class="answer-box"><span class="lbl">Kort svar</span>
-Kartlägg om ni behöver <strong>människa</strong> eller <strong>AI</strong>. Jämför sedan prisdrivare och bokning. Menodi är ett AI-first alternativ med fast prismodell — men bemannade aktörer kan vara rätt vid komplexa samtal.
+Kartlägg om ni behöver <strong>människa</strong> eller <strong>AI</strong>. Jämför sedan prisdrivare och bokning. AI-first-aktörer (t.ex. Skaala, Telink, Menodi) och bemannade aktörer (t.ex. WeCall, Responda) fyller olika behov — testa demosamtal hos minst två.
 </div>
+{off_html}
 </section>
 <section class="block alt"><div class="wrap">
 <div class="two-col">
@@ -1372,7 +1425,7 @@ Börja i rätt guide, hoppa till <a href="/jamfor/">jämförelse</a> och <a href
 
 FAQS = [
     ("vad-kostar-ai-receptionist", "Vad kostar en AI-receptionist?",
-     "Priset i Sverige är ofta abonnemang. Exempel: Menodi från ca 795 kr/mån. Offertbaserade AI och telefoni+AI-moduler förekommer. Räkna alltid total cost vid er volym — se prisguiden. Begär offert; publicerade intervall är uppskattningar för "+REVIEW+"."),
+     "Priset i Sverige är ofta abonnemang. AI-abonnemang kan ligga från ca 800 kr/mån hos vissa; offertbaserade AI och telefoni+AI-moduler förekommer. Räkna alltid total cost vid er volym — se prisguiden. Begär offert; publicerade intervall är uppskattningar för "+REVIEW+"."),
     ("kan-ai-boka-tider", "Kan en AI-receptionist boka tider?",
      "Ja, moderna lösningar bokar i Google Calendar/Outlook och skickar SMS. Kräv det i demot. Utan kalender är det bara en dyrare röstbrevlåda med dialog."),
     ("behaller-jag-mitt-nummer", "Behåller jag mitt telefonnummer?",
@@ -1564,7 +1617,7 @@ Allow: /
         f"""# Svarstjänster.se — {TODAY}
 # Independent Swedish comparison hub for AI receptionists & answering services.
 # {len(urls)} URLs. Prefer answer boxes + dated ranges ({REVIEW}). Not paid rankings.
-# Parent: Menodi (menodi.se).
+# Operated by Svarstjänster AB. Outbound links go to third-party vendor sites.
 
 {BASE}/
 {BASE}/jamfor/
