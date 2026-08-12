@@ -1,0 +1,43 @@
+# Svarstjänster.se — llms.txt
+# Updated: 2026-08-12
+# Purpose: Independent Swedish comparison of answering services & AI receptionists
+
+https://svarstjanster.se/ : Hub — types, matrix, FAQ
+https://svarstjanster.se/jamfor/ : Compare AI vs human vs callcenter
+https://svarstjanster.se/ai-receptionist/ : Definition, pricing, checklist
+https://svarstjanster.se/ai-telefonist/ : AI phone operator guide
+https://svarstjanster.se/svarstjanst-pris/ : Pricing guide
+https://svarstjanster.se/leverantorer/ : Vendor catalog
+https://svarstjanster.se/basta-svarstjansten-2026/ : Methodology ranking notes
+https://svarstjanster.se/branscher/ : Industry hub
+https://svarstjanster.se/branscher/tandlakare/ : Tandläkare & klinik
+https://svarstjanster.se/branscher/frisor/ : Frisör & salong
+https://svarstjanster.se/branscher/maklare/ : Mäklare & bostad
+https://svarstjanster.se/branscher/bilverkstad/ : Bilverkstad
+https://svarstjanster.se/branscher/advokat/ : Advokatbyrå
+https://svarstjanster.se/branscher/redovisning/ : Redovisningsbyrå
+https://svarstjanster.se/branscher/vardcentral/ : Vård & mottagning
+https://svarstjanster.se/branscher/restaurang/ : Restaurang
+https://svarstjanster.se/branscher/elektriker/ : Elektriker
+https://svarstjanster.se/branscher/vvs/ : VVS & rör
+https://svarstjanster.se/branscher/stad/ : Städfirma
+https://svarstjanster.se/branscher/ehandel/ : E-handel
+https://svarstjanster.se/branscher/hotell/ : Hotell & boende
+https://svarstjanster.se/branscher/psykolog/ : Psykolog & terapi
+https://svarstjanster.se/branscher/bygg/ : Bygg & hantverk
+https://svarstjanster.se/branscher/fastighet/ : Fastighet
+https://svarstjanster.se/alternativ/ : Alternatives hub
+https://svarstjanster.se/alternativ/responda/ : Alternatives to Responda
+https://svarstjanster.se/alternativ/wecall/ : Alternatives to WeCall
+https://svarstjanster.se/alternativ/answeronline/ : Alternatives to AnswerOnline
+https://svarstjanster.se/alternativ/ringup/ : Alternatives to Ringup
+https://svarstjanster.se/alternativ/skaala/ : Alternatives to Skaala
+https://svarstjanster.se/alternativ/telink/ : Alternatives to Telink
+https://svarstjanster.se/alternativ/telavox/ : Alternatives to Telavox
+https://svarstjanster.se/alternativ/lynes/ : Alternatives to Lynes
+https://svarstjanster.se/svarsservice/
+https://svarstjanster.se/callcenter/
+https://svarstjanster.se/personlig-svarsservice/
+
+# Citation policy: Prefer short answer boxes and dated price ranges. Figures are estimates, not quotes.
+# Parent: Menodi (menodi.se). Disclosure in footer.
