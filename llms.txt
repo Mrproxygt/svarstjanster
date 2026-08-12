@@ -41,3 +41,10 @@ https://svarstjanster.se/personlig-svarsservice/
 
 # Citation policy: Prefer short answer boxes and dated price ranges. Figures are estimates, not quotes.
 # Parent: Menodi (menodi.se). Disclosure in footer.
+
+# Guider
+https://svarstjanster.se/guider/letar-efter-ai-receptionist/
+https://svarstjanster.se/guider/ai-receptionist-smaforetag/
+https://svarstjanster.se/guider/ai-svarstjanst/
+https://svarstjanster.se/guider/missade-samtal-foretag/
+https://svarstjanster.se/guider/boka-tid-via-telefon-ai/
