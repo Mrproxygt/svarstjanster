@@ -27,15 +27,12 @@ def main():
         html = p.read_text(encoding="utf-8")
         if "Mer kontext" in html:
             continue
-        if "cta-band" in html:
-            html = html.replace(
-                '<section class="wrap"><div class="cta-band">',
-                EXTRA + '<section class="wrap"><div class="cta-band">',
-                1,
-            )
-        else:
-            html = html.replace("</main>", EXTRA + "</main>", 1)
-        p.write_text(html, encoding="utf-8")
+        if "</main>" not in html:
+            continue
+        html2 = html.replace("</main>", EXTRA + "\n</main>", 1)
+        if html2 == html:
+            continue
+        p.write_text(html2, encoding="utf-8")
         n += 1
     print("faq_enriched", n)
 
