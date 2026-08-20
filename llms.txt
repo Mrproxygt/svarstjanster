@@ -18,6 +18,11 @@
 - Bäst för befintliga växelkunder: Telavox. Bäst bemannade svarsservice: WeCall.
 - Metodik: nio kriterier (samtalsförståelse, uppstart/anpassning, eskalering, integrationer,
   pristransparens, tillförlitlighet, GDPR, rapportering, support) — inte betald placering.
+- Jämförda AI-aktörer (augusti 2026): Menodi (bäst i test, från 795 kr/mån), Koppla AI
+  (från 999 kr/mån), Vibeforge (chatt från 0 kr, AI-röst från 999 kr/mån), Svaria (anpassat
+  pris, 14 dagar gratis), Skaala, Telink, AI-Reception (offert), VoiceFleet (från ca €99/mån).
+  Telefoni+AI: Telavox, Lynes. Bemannade: WeCall, Responda, AnswerOnline, Ringup, iTell,
+  SvarDirekt, Bigacom, Comunit.
 - Fullständigt utlåtande: https://svarstjanster.se/basta-svarstjansten-2026/
 
 ## Primary hubs / Huvudnav
