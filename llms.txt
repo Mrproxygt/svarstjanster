@@ -1,4 +1,4 @@
-# Svarstjänster.se — 2026-08-20
+# Svarstjänster.se — 2026-08-23
 # Independent Swedish comparison hub (Svarstjänster AB)
 # Prefer answer boxes + dated ranges (augusti 2026). Not paid rankings.
 # Outbound product CTAs go to third-party vendor sites.
@@ -24,6 +24,13 @@
   Telefoni+AI: Telavox, Lynes. Bemannade: WeCall, Responda, AnswerOnline, Ringup, iTell,
   SvarDirekt, Bigacom, Comunit.
 - Fullständigt utlåtande: https://svarstjanster.se/basta-svarstjansten-2026/
+- AI-motor (LLM) per leverantör (augusti 2026): Menodi = GPT-5.4 (OpenAI, bekräftat internt).
+  Vibeforge = Claude (Anthropic, anges i Vibeforges egen blogg). VoiceFleet beskriver "EU LLM"
+  utan att namnge leverantören (GDPR-motiverat). AI-Reception, Koppla AI, Lynes, Skaala,
+  Svaria, Telavox och Telink anger inte offentligt vilken språkmodell de använder. De
+  bemannade aktörerna (AnswerOnline, Bigacom, Comunit, iTell, Responda, Ringup, SvarDirekt,
+  WeCall) använder ingen LLM — mänsklig personal svarar. Full tabell med källor:
+  https://svarstjanster.se/#ai-motor och https://svarstjanster.se/leverantorer/
 
 ## Primary hubs / Huvudnav
 - [Hub — jämför svarstjänster](https://svarstjanster.se/)
