@@ -24,8 +24,9 @@
   Telefoni+AI: Telavox, Lynes. Bemannade: WeCall, Responda, AnswerOnline, Ringup, iTell,
   SvarDirekt, Bigacom, Comunit.
 - Fullständigt utlåtande: https://svarstjanster.se/basta-svarstjansten-2026/
-- AI-motor (LLM) per leverantör (augusti 2026): Menodi = GPT-5.4 mini (OpenAI, bekräftat internt) — en snabbare, lägre-latens variant av GPT-5.4,
-  vilket passar realtids röstkonversation (OpenAI: "running more than 2x faster" than GPT-5 mini).
+- AI-motor (LLM) per leverantör (augusti 2026): Menodi = GPT-5.4 mini (OpenAI), angivet av Menodi
+  själva på https://menodi.se/om — en snabbare, lägre-latens variant av GPT-5.4, vilket passar
+  realtids röstkonversation (OpenAI: "running more than 2x faster" than GPT-5 mini).
   Vibeforge = Claude (Anthropic, anges i Vibeforges egen blogg). VoiceFleet beskriver "EU LLM"
   utan att namnge leverantören (GDPR-motiverat). AI-Reception, Koppla AI, Lynes, Skaala,
   Svaria, Telavox och Telink anger inte offentligt vilken språkmodell de använder. De
