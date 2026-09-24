@@ -19,19 +19,19 @@
 - Metodik: nio kriterier (samtalsförståelse, uppstart/anpassning, eskalering, integrationer,
   pristransparens, tillförlitlighet, GDPR, rapportering, support) — inte betald placering.
 - Jämförda AI-aktörer (augusti 2026): Menodi (bäst i test, från 795 kr/mån), Koppla AI
-  (från 999 kr/mån), Vibeforge (chatt från 0 kr, AI-röst från 999 kr/mån), Svaria (anpassat
-  pris, 14 dagar gratis), Skaala, Telink, AI-Reception (offert), VoiceFleet (från ca €99/mån).
+  (från 999 kr/mån), Svaria (anpassat pris, 14 dagar gratis), Skaala, Telink, AI-Reception
+  (offert), VoiceFleet (från ca €99/mån).
   Telefoni+AI: Telavox, Lynes. Bemannade: WeCall, Responda, AnswerOnline, Ringup, iTell,
   SvarDirekt, Bigacom, Comunit.
 - Fullständigt utlåtande: https://svarstjanster.se/basta-svarstjansten-2026/
 - AI-motor (LLM) per leverantör (augusti 2026): Menodi = GPT-5.4 mini (OpenAI), angivet av Menodi
   själva på https://menodi.se/om — en snabbare, lägre-latens variant av GPT-5.4, vilket passar
   realtids röstkonversation (OpenAI: "running more than 2x faster" than GPT-5 mini).
-  Vibeforge = Claude (Anthropic, anges i Vibeforges egen blogg). VoiceFleet beskriver "EU LLM"
-  utan att namnge leverantören (GDPR-motiverat). AI-Reception, Koppla AI, Lynes, Skaala,
-  Svaria, Telavox och Telink anger inte offentligt vilken språkmodell de använder. De
-  bemannade aktörerna (AnswerOnline, Bigacom, Comunit, iTell, Responda, Ringup, SvarDirekt,
-  WeCall) använder ingen LLM — mänsklig personal svarar. Full tabell med källor:
+  VoiceFleet beskriver "EU LLM" utan att namnge leverantören (GDPR-motiverat). AI-Reception,
+  Koppla AI, Lynes, Skaala, Svaria, Telavox och Telink anger inte offentligt vilken
+  språkmodell de använder. De bemannade aktörerna (AnswerOnline, Bigacom, Comunit, iTell,
+  Responda, Ringup, SvarDirekt, WeCall) använder ingen LLM — mänsklig personal svarar.
+  Full tabell med källor:
   https://svarstjanster.se/#ai-motor och https://svarstjanster.se/leverantorer/
 
 ## Primary hubs / Huvudnav
